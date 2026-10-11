@@ -6,6 +6,14 @@ The front display shows a 16 × 16 album thumbnail, two scrolling lines for the 
 
 The app runs on a computer that stays on while you listen. It controls your active Spotify player; audio continues playing on your phone, computer, or Spotify Connect speaker. Spotify Premium is required.
 
+## Standalone Wi-Fi status
+
+The current app requires the computer companion. Installing its Apps menu entry does not make it run independently on the Bar.
+
+Direct device tests on firmware 1.2.4 found two blockers: its JavaScript runtime has no native input listener, and HTTPS requests to Spotify's playback and sign-in hosts fail during TLS negotiation. The same Bar successfully connected to BUSY's HTTPS update host, so this was not simply a disconnected Wi-Fi connection. A larger JSON response probe also restarted the device; further native runtime testing needs bounded response handling.
+
+The upstream [development input API](https://github.com/busy-app/busybar-firmware/blob/dev/applications/services/js_runner/js_input.c) adds `listen("input", handler)` for the START button and encoder. It is absent from the tested 1.2.4 release. A standalone implementation needs installable firmware with native input support and verified Spotify HTTPS compatibility, then on-device token refresh and album image decoding. No standalone build has been validated or installed.
+
 ## Setup
 
 Use Python 3.11 or later.
