@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "busybar-spotify"
+version = "0.1.0"
+description = "Spotify album art and playback controls for BUSY Bar"
+requires-python = ">=3.11"
+dependencies = ["busylib==2.6.0", "httpx==0.28.1", "Pillow==12.3.0", "python-dotenv==1.2.4"]
+
+[project.scripts]
+busybar-spotify = "busybar_spotify.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["busybar_spotify*"]
+
+[tool.setuptools.package-data]
+busybar_spotify = ["native/*.js", "native/*.json"]

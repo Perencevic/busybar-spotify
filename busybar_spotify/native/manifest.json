@@ -1,0 +1,9 @@
+{
+  "format_version": 1,
+  "id": "app.spotify",
+  "name": "Spotify",
+  "version": "0.1.0",
+  "description": "Album art and playback controls",
+  "author": "Perencevic",
+  "debug": false
+}
